@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:////app/aqualens.db
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_VISION_MODEL=${GROQ_VISION_MODEL:-llava-7b-11b-instruct-v1.1}
+      - AI_PROVIDER_CHAIN=groq,cache,mock
+      - SLEEP_SECONDS=30
+      - EXPERT_PIN=${EXPERT_PIN:-change-me}
+      - FHIR_SERVER_URL=${FHIR_SERVER_URL:-https://hapi.fhir.org/baseR4}
+      - FHIR_CODESYSTEM_URL=https://example.org/aqualens/CodeSystem/stream-observation
+      - CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+      - STORAGE_BACKEND=local
+      - UPLOAD_DIR=/app/uploads
+      - AI_CACHE_DIR=/app/cache/ai
+    volumes:
+      - ./backend:/app
+      - db_data:/app
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db_data:

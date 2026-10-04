@@ -1,0 +1,107 @@
+{
+  "entry": [
+    {
+      "name": "Demo Creek North",
+      "position": {
+        "latitude": 12.9716,
+        "longitude": 77.5946
+      },
+      "request": {
+        "method": "POST",
+        "url": "Location"
+      },
+      "resourceType": "Location"
+    },
+    {
+      "code": "draining_pipes",
+      "has_note": true,
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "resourceType": "Observation",
+      "value": "yes"
+    },
+    {
+      "activity": "ai_edited",
+      "request": {
+        "method": "POST",
+        "url": "Provenance"
+      },
+      "resourceType": "Provenance"
+    },
+    {
+      "code": "water_aspect",
+      "has_note": true,
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "resourceType": "Observation",
+      "value": "A"
+    },
+    {
+      "activity": "ai_accepted",
+      "request": {
+        "method": "POST",
+        "url": "Provenance"
+      },
+      "resourceType": "Provenance"
+    },
+    {
+      "code": "water_height",
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "resourceType": "Observation",
+      "valueQuantity": 42.0
+    },
+    {
+      "activity": "human",
+      "request": {
+        "method": "POST",
+        "url": "Provenance"
+      },
+      "resourceType": "Provenance"
+    },
+    {
+      "code": "overall_assessment",
+      "has_note": true,
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "resourceType": "Observation",
+      "value": "moderate"
+    },
+    {
+      "code": "risk_contact",
+      "has_note": true,
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "resourceType": "Observation",
+      "value": "high"
+    },
+    {
+      "code": "risk_ecosystem",
+      "has_note": true,
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "resourceType": "Observation",
+      "value": "moderate"
+    }
+  ],
+  "excluded": [
+    "photos",
+    "feelings",
+    "free_text"
+  ],
+  "fhir_version": "R4B",
+  "resourceType": "Bundle",
+  "type": "transaction"
+}
